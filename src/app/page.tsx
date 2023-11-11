@@ -8,8 +8,12 @@ export default function Home() {
     <main className={`${oxygen.className} font-normal antialiased`}>
       <TitleBox />
       <Search />
-      <section className='p-5'>
-        <Card />
+      <section className='p-5 relative columns-2xs'>
+        {
+          Array(20).fill(0).map((_, i) => (
+            <Card key={i} index={i}/>
+          ))
+        }
       </section>
     </main>
   )
