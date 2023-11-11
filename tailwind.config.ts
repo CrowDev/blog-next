@@ -19,7 +19,8 @@ const config: Config = {
         'berkeley-blue': '#003366',
         'sapphire': '#0054A3',
         'indigo': '#430B8E'
-      }
+      },
+      display: ['group-hover'],
     }
   },
   plugins: [],
