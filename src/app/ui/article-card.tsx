@@ -11,7 +11,11 @@ export const Card = ({index}: {index: number}) => {
       <div className='inset-0 absolute grid place-content-center group-hover:invisible'>
         <span className='text-xl font-semibold'>Title {index}</span>
       </div>
-      <div className={`invisible opacity-0 group-hover:opacity-100 group-hover:visible transition-opacity absolute inset-0 m-auto rounded-lg w-[90%] h-[85%] blur-sm bg-[${data ? data[0] : 0}, ${data ? data[1] : 0}, ${data ? data[2] : 0}]/[0.25] backdrop-blur-sm shadow-[-13px_15px_18px_0px_rgba(${data ? data[0] : 0}, ${data ? data[1] : 0}, ${data ? data[2] : 0},0.4)]`}></div>
+      <div className={`z-10 invisible opacity-0 group-hover:opacity-100 group-hover:visible transition-opacity absolute inset-0 m-auto rounded-lg w-[90%] h-[85%]  bg-[${data ? data[0] : 0}, ${data ? data[1] : 0}, ${data ? data[2] : 0}]/[0.25] backdrop-blur-sm shadow-[-13px_15px_18px_0px_rgba(${data ? data[0] : 0}, ${data ? data[1] : 0}, ${data ? data[2] : 0},0.4)] grid grid-rows-[1fr_3fr_2fr] p-3`}>
+        <div className='w-[250px] justify-self-center text-xl font-semibold selection:bg-indigo/[0.6]'>Title {index}</div>
+        <div className='w-[250px] justify-self-center selection:bg-indigo/[0.6]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at sem sit amet enim molestie consequat at eu purus. Phasellus.</div>
+        <button className='px-2 py-1.5 bg-indigo/[0.6] w-[250px] h-[50px] place-self-center rounded-lg'>Read More</button>
+      </div>
     </article>
   )
 }
