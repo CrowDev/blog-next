@@ -8,7 +8,7 @@ export default function Home() {
     <main className={`${oxygen.className} font-normal antialiased`}>
       <TitleBox />
       <Search />
-      <section className='p-5 relative columns-2xs'>
+      <section className='p-5 relative columns-2xs gap-8'>
         {
           Array(20).fill(0).map((_, i) => (
             <Card key={i} index={i}/>
