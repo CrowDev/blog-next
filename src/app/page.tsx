@@ -3,29 +3,28 @@ import { oxygen } from './ui/fonts'
 import { Search } from './ui/search'
 import { TitleBox } from './ui/title-box'
 import { Card } from './ui/article-card'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { useIntersection } from '@/hooks/useIntersection'
 
 export default function Home() {
-	const elementRef: any = useRef(null)
+	const [elements, setElements] = useState<Array<number>>(
+		Array.from({ length: 10 }, (_, i) => i)
+	)
+	const [isClose, elementRef] = useIntersection()
 	useEffect(() => {
-		const observer = new IntersectionObserver(([el], observer) => {
-			if (el.isIntersecting) {
-				console.log('intersecting')
-			}
-			return () => observer.disconnect()
-		}, { rootMargin: '100px' })
-		observer.observe(elementRef.current)
-	}, [])
-
-
+    if (isClose) {
+      const newElements = Array.from({ length: elements.length + 10 }, (_, i) => i)
+      setElements(newElements)
+    }
+	}, [isClose])
 
   return <main className={`${oxygen.className} font-normal antialiased`}>
       <TitleBox />
       <Search />
       <section className='p-5 relative columns-2xs gap-8'  >
         {
-          Array(20).fill(0).map((_, i) => (
-            <Card key={i} index={i}/>
+          elements.map((element) => (
+            <Card key={element} index={element}/>
           ))
         }
       </section>
