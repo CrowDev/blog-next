@@ -8,7 +8,7 @@ import { useIntersection } from '@/hooks/useIntersection'
 
 interface Element {
   id: number
-  value: number
+  value: number | string
 }
 
 export default function Home() {
@@ -27,11 +27,19 @@ export default function Home() {
       setElements(newElements)
     }
 	}, [isClose])
+  const onTermUpdated: any = (e: any) => {
+    const value = e.target.value
+    const termSearch = {
+      id: 0,
+      value
+    }
+    setElements([termSearch])
+  }
 
 
   return <main className={`${oxygen.className} font-normal antialiased`}>
       <TitleBox />
-      <Search />
+      <Search onUpdated={onTermUpdated} />
       <section className='p-5 relative columns-2xs gap-8'  >
         {
           elements.map((element: Element) => (
