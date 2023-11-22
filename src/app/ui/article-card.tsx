@@ -1,7 +1,7 @@
 'use client'
 import { useColor } from 'color-thief-react'
 
-export const Card = ({value, term = ''}: {value: number | string, term: string}) => {
+export const Card = ({value}: {value: number | string}) => {
   const { data } = useColor(`https://source.unsplash.com/random/${value}`, 'rgbArray', { crossOrigin: 'Anonymous' })
   return (
     <article className='bg-[#00183d] group bg-inherit relative break-inside-avoid-column mb-4'>
