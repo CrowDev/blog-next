@@ -8,10 +8,11 @@ import { useEffect, useRef } from 'react'
 export default function Home() {
 	const elementRef: any = useRef(null)
 	useEffect(() => {
-		const observer = new IntersectionObserver(([el]) => {
+		const observer = new IntersectionObserver(([el], observer) => {
 			if (el.isIntersecting) {
 				console.log('intersecting')
 			}
+			return () => observer.disconnect()
 		}, { rootMargin: '100px' })
 		observer.observe(elementRef.current)
 	}, [])
