@@ -14,7 +14,7 @@ export default function Home() {
 	const [isClose, elementRef] = useIntersection()
 	useEffect(() => {
     if (isClose) {
-      fillInitialElements()
+      updateElements()
     }
 	}, [isClose])
   const onTermUpdated: any = (e: any) => {
@@ -26,16 +26,16 @@ export default function Home() {
       }
       setElements([termSearch])
     } else {
-      fillInitialElements()
+      updateElements()
     }
   }
-  const fillInitialElements = () => {
-    const newElements = Array.from(
-      { length: elements.length + 10 }, (_, i) => {
-        return {id: i, value: i}
-      }
-    )
-    setElements(newElements)
+  const updateElements = () => {
+    const currentElements = [...elements]
+    const newElements = elements.length + 10
+    for(let i = elements.length; i < newElements; i++) {
+      currentElements.push({id: i, value: i})
+    }
+    setElements(currentElements)
   }
 
   return <main className={`${oxygen.className} font-normal antialiased`}>
