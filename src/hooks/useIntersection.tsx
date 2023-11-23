@@ -10,7 +10,7 @@ export const useIntersection = () => {
 			} else {
 				setIsClose(false)
 			}
-		}, { rootMargin: '100px' })
+		}, { rootMargin: '200px' })
 		observer.observe(elementRef.current)
 		return () => observer?.disconnect()
 	}, [])
